@@ -14,9 +14,9 @@ const ProductCard = ({ product, grid }) => {
   const [like,setLike] = useState(["https://res.cloudinary.com/dk0o7tdks/image/upload/v1675353208/images/wish_vdcmao.png","16px","16px"]);
   let classname;
   if(keyword){
-    classname = `${location.pathname === `/store/${keyword}`? `gr-${grid}`:"col-3"}`;
+    classname = `${location.pathname === `/store/${keyword}`? `gr-${grid}`:`gr-${grid}`}`;
   }else{
-    classname = `${location.pathname === `/store`? `gr-${grid}`:"col-3"}`;
+    classname = `${location.pathname === `/store`? `gr-${grid}`:`gr-${grid}`}`;
   }
 
   const addToCartHandler = () => {

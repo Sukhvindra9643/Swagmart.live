@@ -28,7 +28,7 @@ const Header = () => {
     dispatch(getTotals());
     dispatch(getAllUsers());
   }, [cart, dispatch]);
-
+  console.log(users);
   return (
     <>
       <header className="header-top-strip py-3">

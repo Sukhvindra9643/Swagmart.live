@@ -24,7 +24,7 @@ const categories = [
   {
     title: "Clothes",
     imgUrl:
-      "https://media.istockphoto.com/id/1137550851/photo/female-overcoat-in-modern-clothing-store.jpg?s=612x612&w=0&k=20&c=Oa8LYOo-0qCNmOcjryiPuRD8SoAcMrvPLbuHyMzjQrk=",
+      "https://res.cloudinary.com/dk0o7tdks/image/upload/v1680365650/images/clothes_m030oy.jpg",
   },
   {
     title: "Footwear",

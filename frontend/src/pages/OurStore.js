@@ -124,7 +124,7 @@ const OurStore = () => {
     sortFilter,
   ]);
   // eslint-disable-next-line
-  const [grid, setGrid] = useState(6);
+  const [grid, setGrid] = useState(3);
   let width = window.innerWidth;
   const [filterShowHide, setFilterShowHide] = useState(`${width <=600 ? "none":"block"}`);
  

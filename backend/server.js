@@ -25,9 +25,7 @@ cloudinary.config({
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
   });
-app.get("*",(req,res)=>{
-    res.sendFile(__dirname,"/frontend/public/index.html")
-})
+
 const server = app.listen(process.env.PORT,(req,res)=>{
     console.log(`Server is working on ${host}:${process.env.PORT}`);
 })
