@@ -1,0 +1,320 @@
+.speedDial {
+  position: fixed;
+  right: 3vmax;
+  top: 14%;
+}
+
+.speedDialIcon {
+  width: 76px;
+  height: 66px;
+  border-radius: 100%;
+}
+.speedDial > button {
+  width: 45px;
+  height: 45px;
+}
+.home-featured-products {
+  display: flex;
+  max-width: 100%;
+  padding: 0 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.home-popular-products {
+  display: flex;
+  max-width: 100%;
+  padding: 0 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.home-featured-products > div {
+  width: 24%;
+}
+.home-popular-products > div {
+  width: 24%;
+}
+.services .services-item {
+  align-items: center;
+}
+.categories > a {
+  width: 25%;
+}
+.categories > a > div {
+  width: 100%;
+  padding: 10px 10px 10px 20px;
+  height: 80px;
+}
+.gap-10 {
+  gap: 10px;
+}
+.categories > a > div > img {
+  width: 110px;
+}
+.product-image{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media ((width >= 601px) and (width <= 1020px)) {
+  .small-banner {
+    width: 48%;
+  }
+  .small-banner-content > h4 {
+    font-size: 16px;
+    line-height: 6px;
+    letter-spacing: 1;
+  }
+  .small-banner-content > h5 {
+    font-size: 11px;
+    line-height: 5px;
+    letter-spacing: 1px;
+  }
+  .small-banner-content > p {
+    line-height: 17px;
+    letter-spacing: 0;
+    font-size: 13px;
+  }
+  .categories > a > div {
+    width: 100%;
+    padding: 0px;
+    height: 80px;
+  }
+  .categories > a > div > div > h6{
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .categories > div > div {
+    width: 75%;
+  }
+  .categories > div {
+    flex-direction: row;
+    padding: 10px 6px;
+  }
+  .categories > a > div > img {
+    width: 80px;
+  }
+  .categories > a > div > div > p {
+    font-size: 12px;
+  }
+  .services {
+    margin-left: 20px;
+  }
+  .services > div {
+    flex-direction: row;
+  }
+  .services > div > img {
+    width: 27px;
+    height: 30px;
+  }
+  .services .services-item {
+    align-items: normal;
+  }
+  .services .services-item > div > h6 {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 20px;
+  }
+  .services .services-item > div > p {
+    font-size: 15px;
+    line-height: 15px;
+  }
+  .home-featured-products > div {
+    width: 23%;
+    margin-left: 5px;
+  }
+  .product-card .product-image img {
+    height: 28vh;
+    width: 19vw;
+  }
+  .home-featured-products {
+    width: 100vw;
+    justify-content: center;
+    /* gap: 19px; */
+  }
+  .home-popular-products {
+    width: 100vw;
+    justify-content: center;
+    /* gap: 19px; */
+  }
+  .product-card {
+    padding: 10px;
+  }
+  .home-popular-products > div {
+    width: 23%;
+    margin-left: 5px;
+  }
+  .speedDial {
+    position: sticky;
+    right: 3vmax;
+    top: 12%;
+  }
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+  }
+  .speedDial > button {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media (width <= 600px) {
+  .home-wrapper-1 {
+    padding-top: 10px;
+  }
+  .gap-10 {
+    gap: 7px;
+  }
+  .main-banner {
+    width: 100vw;
+  }
+  .main-banner-col-1 {
+    width: 45vw;
+  }
+  .main-banner > img {
+    width: 48vw;
+  }
+  .main-banner-col-2 {
+    display: flex;
+    margin-right: 15px;
+    /* width: 48vw; */
+  }
+  .main-banner-content {
+    top: 15%;
+    left: 5%;
+  }
+  .main-banner-content > h4 {
+    font-size: 8px;
+    line-height: 10px;
+  }
+  .main-banner-content > h5 {
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 10px;
+  }
+  .main-banner-content > p {
+    font-size: 11px;
+    letter-spacing: 1px;
+    line-height: 10px;
+  }
+  .small-banner {
+    margin-right: 5px;
+    width: 44%;
+  }
+  .small-banner-content > h4 {
+    font-size: 9px;
+    line-height: 0px;
+    letter-spacing: 0;
+    color: var(--color-bf4800);
+    margin: 0 0 8px;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .small-banner-content > h5 {
+    font-size: 8px;
+    line-height: 1px;
+    letter-spacing: 0;
+    font-weight: 500;
+    text-transform: none;
+  }
+  .small-banner-content > p {
+    line-height: 9px;
+    letter-spacing: 0;
+    font-size: 8px;
+  }
+  .categories > a > div {
+    width: 100%;
+    padding: 0px 0px 0px 10px;
+    height: 60px;
+    flex-direction: column-reverse;
+  }
+  .categories > div > div {
+    width: 100%;
+    text-align: center;
+  }
+  .categories > a > div > div > h6 {
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+  .home-featured-products {
+    display: flex;
+    flex-direction: row;
+    margin: 8px;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .home-featured-products > div {
+    width: 45vw;
+    height: 305px;
+  }
+
+  .product-card .product-image > img {
+    width: 135px;
+    height: 120px;
+    margin-bottom: 15px;
+  }
+  .services {
+    margin-left: 20px;
+  }
+  .services > div {
+    flex-direction: column;
+  }
+  .services > div > img {
+    width: 25px;
+  }
+  .services .services-item {
+    align-items: normal;
+  }
+  .services .services-item > div > h6 {
+    font-size: 8px;
+    font-weight: bold;
+    line-height: 10px;
+  }
+  .services .services-item > div > p {
+    font-size: 9px;
+    line-height: 9px;
+  }
+  .home-popular-products {
+    display: flex;
+    flex-direction: row;
+    margin: 8px;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .home-popular-products > div {
+    width: 43vw;
+    height: 305px;
+  }
+  .card-wrapper {
+    height: 100px;
+  }
+  .card-wrapper .marquee > div > img {
+    height: 80px;
+  }
+  .special-product {
+    display: flex;
+    flex-direction: column;
+  }
+  .special-product-card {
+    width: 93vw;
+  }
+  .gr-6 .description{
+    display: none;
+  }
+  .speedDial {
+    position: sticky;
+    right: 3vmax;
+    top: 12%;
+  }
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+  }
+  .speedDial > button {
+    width: 37px;
+    height: 37px;
+  }
+}
+

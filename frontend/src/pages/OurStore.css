@@ -1,0 +1,125 @@
+.filter-box{
+    display: block;
+}
+.filter-sort-grid > div{
+    justify-content: space-between;
+}
+.filter-sort-grid > div >div >p {
+    width: 80px;
+}
+.filter{
+    display: none;
+}
+@media (width <= 600px) {
+    .filter-box{
+        width: 100vw;
+    }
+    .store-wrapper > div >div .filter{
+        display: block;
+        width: 94vw;
+        height: 5vh;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 9px;
+        margin: auto;
+        margin-bottom: 5px;
+        font-size: 22px;
+    }
+    .col-9{
+        width: 100vw;
+    }
+    .filter-sort-grid > div >div >p{
+        font-size: 12px;
+        width: 42px;
+    }
+    .filter-sort-grid > div{
+        justify-content: start;
+        gap: 3px;
+    }
+    .filter-sort-grid > div >div{
+        gap: 0px;
+        padding: 0px;
+    }
+    .filter-sort-grid > div >div > .form-select{
+        width: 34vw;
+    }
+    .filter-sort-grid > div > div >.total-products{
+        font-size: 12px;
+        width: 80px;
+    }
+    .filter-sort-grid > div .filter-grid{
+        width: 100vw;
+    }
+    .gr-6{
+        width: 48.4%;
+    }
+    .grid .gr-4-img {
+        display: none;
+    }
+    .grid .gr-3-img {
+        display: none;
+    }
+    .page-link {
+        text-decoration: none;
+        font: 300 1.4vmax "Roboto";
+        color: rgb(80, 80, 80);
+        transition: all 0.3s;
+    }
+}
+@media (width >= 601px) and (width <= 1025px){
+    .filter-box{
+        width: 100vw;
+    }
+    .store-wrapper > div >div .filter{
+        display: block;
+        width: 98vw;
+        height: 5vh;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 9px;
+        margin: auto;
+        margin-bottom: 5px;
+        font-size: 22px;
+    }
+    .col-9{
+        width: 100vw;
+    }
+    .filter-sort-grid > div >div >p{
+        font-size: 12px;
+        width: 42px;
+    }
+    .filter-sort-grid > div{
+        justify-content: start;
+        gap: 3px;
+    }
+    .filter-sort-grid > div >div{
+        gap: 0px;
+        padding: 0px;
+    }
+    .filter-sort-grid > div >div > .form-select{
+        width: 34vw;
+    }
+    .filter-sort-grid > div > div >.total-products{
+        font-size: 18px;
+        width: 110px;
+    }
+    .filter-sort-grid > div .filter-grid{
+        width: 100vw;
+        justify-content: space-around;
+    }
+    .gr-6{
+        width: 48.4%;
+    }
+    .grid .gr-4-img {
+        display: none;
+    }
+    .grid .gr-3-img {
+        display: none;
+    }
+    .page-link {
+        text-decoration: none;
+        font: 300 1.4vmax "Roboto";
+        color: rgb(80, 80, 80);
+        transition: all 0.3s;
+    }
+}

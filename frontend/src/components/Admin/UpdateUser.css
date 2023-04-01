@@ -1,0 +1,148 @@
+.newUserContainer {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(221, 221, 221);
+    border-left: 1px solid rgba(0, 0, 0, 0.158);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .newUserContainer h1 {
+    color: rgba(0, 0, 0, 0.733);
+    font: 300 2.2rem "Roboto";
+    text-align: center;
+  }
+  
+  .createUserForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 3vmax;
+    justify-content: space-evenly;
+    height: 92%;
+    width: 65vw;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
+  }
+  
+  .createUserForm > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .createUserForm > div > input,
+  .createUserForm > div > select,
+  .createUserForm > div > textarea {
+    padding: 1vmax 4vmax;
+    padding-right: 1vmax;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 4px;
+    font: 300 1.3vmax 'Segoe UI';
+    outline: none;
+  }
+  
+  .createUserForm > div > svg {
+    position: absolute;
+    transform: translateX(1vmax);
+    font-size: 1.6vmax;
+    color: rgba(0, 0, 0, 0.623);
+  }
+  
+
+  #createUserBtn {
+    border: none;
+    background-color: tomato;
+    color: white;
+    font: 300 0.9vmax "Roboto";
+    width: 100%;
+    padding: 0.8vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  }
+  
+  #createUserBtn:hover {
+    background-color: rgb(179, 66, 46);
+  }
+@media(width <= 600px) {
+    .newUserContainer {
+      background-color: rgb(255, 255, 255);
+      height: 50vh;
+    }
+    .createUserForm {
+      height: 45vh;
+      margin-top: 5 0 10px 0;
+      padding : 3vmax 1vmax
+    }
+  
+    .createUserForm > div > input,
+    .createUserForm > div > select,
+    .createUserForm > div > textarea {
+      padding: 2.5vmax 5vmax;
+      font: 300 1.7vmax 'Segoe UI';
+    }
+  
+    .createUserForm > div > svg {
+      font-size: 2.8vmax;
+    }
+    #createProductFormImage > img {
+      width: 13vmax;
+      height: 8vmax;
+      margin: 0 0.5vmax;
+  }
+    #createProductFormFile > img {
+      width: 8vmax;
+      border-radius: 100%;
+    }
+  
+    #createProductFormFile > input::file-selector-button {
+      height: 7vh;
+      font: 400 1.8vmax 'Segoe UI';
+    }
+  
+    #createUserBtn {
+      font: 300 1.9vmax "Roboto";
+      padding: 1.8vmax;
+    }
+  }
+  @media ((width >= 601px) and (width <= 1025px)){
+    .newUserContainer {
+      background-color: rgb(255, 255, 255);
+    }
+    .createUserForm {
+      padding: 5vmax;
+      height: 80%;
+    }
+  
+    .createUserForm > div > input,
+    .createUserForm > div > select,
+    .createUserForm > div > textarea {
+      padding: 2.5vmax 5vmax;
+      font: 300 1.7vmax 'Segoe UI';
+    }
+  
+    .createUserForm > div > svg {
+      font-size: 2.8vmax;
+    }
+  
+    #createProductFormFile > img {
+      width: 8vmax;
+      border-radius: 100%;
+    }
+  
+    #createProductFormFile > input::file-selector-button {
+      height: 7vh;
+      font: 400 1.8vmax 'Segoe UI';
+    }
+  
+    #createUserBtn {
+      font: 300 1.9vmax "Roboto";
+      padding: 1.8vmax;
+    }
+  }

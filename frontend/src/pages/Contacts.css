@@ -1,0 +1,27 @@
+.contact-title {
+    margin-bottom: 20px;
+}
+@media ( width<= 550px){
+
+    .contact-inner-wrapper{
+        width: 85vw;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .contact-inner-wrapper > div{
+        width: 80vw;
+    }
+    .contact-inner-wrapper li {
+        list-style: none;
+        font-size: 12px;
+    }
+    .contact-title {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 35px;
+        text-align: left;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,112 @@
+.special-product-card > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+}
+.special-product-card > div .special-product-image{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    width: 49%;
+}
+.special-product-card > div>div>img{
+    width: 100%;
+}
+@media ((width >= 850px) and (width <= 1025px)){
+    .special-product-card > div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .special-product-card > div .special-product-image{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+        width: 42%;
+    }
+    .special-product-card > div>div>img{
+        width: 100%;
+    }
+    .special-product-content > h5{
+        font-size: 15px;
+        color: black;
+    }
+    .special-product-content > h6{
+        font-size: 18px;
+        color: black;
+    }
+    .discount-till > p{
+        font-size: 14px;
+    }
+    .discount-till > div > span{
+        padding: 8px 11px;
+    }
+    .button{
+        font-size: 17px;
+    }
+}
+@media ((width > 550px) and (width < 850px)){
+     .special-product > a{
+        width:49%
+     }
+    .special-product-card{
+        width: 100%;
+    }
+    .special-product-card > div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .special-product-card > div .special-product-image{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+        width: 42%;
+    }
+    .special-product-card > div>div>img{
+        width: 100%;
+    }
+    .special-product-content > h5{
+        font-size: 15px;
+        color: black;
+    }
+    .special-product-content > h6{
+        font-size: 18px;
+        color: black;
+    }
+    .discount-till > p{
+        font-size: 14px;
+    }
+    .discount-till > div > span{
+        padding: 8px 11px;
+    }
+    .button{
+        font-size: 17px;
+    }
+}
+@media ((width <= 600px)){
+    .special-product-content > h5{
+        font-size: 14px;
+        color: black;
+    }
+    .special-product-content > h6{
+        font-size: 18px;
+        color: black;
+    }
+    .discount-till > p{
+        font-size: 14px;
+    }
+    .discount-till > div > span{
+        padding: 6px;
+    }
+    .button{
+        font-size: 15px;
+    }
+}
+

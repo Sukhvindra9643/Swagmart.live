@@ -1,0 +1,111 @@
+@media (width <= 600px) {
+  .footer-top-data {
+    gap: 7px;
+    width: 100px;
+    margin-left: 9px;
+  }
+  .footer-top-data > h2 {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .footer-top-data > img {
+    width: 18px;
+  }
+  footer .footer-top-data-iconbox {
+    padding: 3px;
+    width: 110px;
+  }
+  footer .footer-top-data-inputbox {
+    width: 65vw;
+    margin: 0 0;
+    padding: 0px 4px;
+  }
+  footer .input-group .form-control {
+    font-size: 12px;
+    padding: 0px 0px 0px 3px;
+    height: 30px;
+  }
+  footer .input-group-text {
+    width: 60px;
+    font-size: 11px;
+    height: 30px;
+    padding: 0 5px;
+  }
+  footer .footer-middle-data {
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  footer .footer-middle-data > div {
+    padding: 0 0 0 3px;
+    width: fit-content;
+    text-align: center;
+  }
+  footer .footer-middle-databox-1 {
+    font-size: 7px;
+  }
+  footer .footer-middle-heading {
+    font-size: 11px;
+  }
+  .social-icon {
+    gap: 8px;
+  }
+  footer .social-icon-font {
+    font-size: 14px;
+  }
+}
+@media ((width >= 601px) and (width <= 1025px)) {
+  .footer-top-data {
+    gap: 10px;
+    width: 140px;
+  }
+  .footer-top-data > h2 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .footer-top-data > img {
+    width: 28px;
+  }
+  footer .footer-top-data-iconbox {
+    padding: 3px;
+    width: 200px;
+    margin-left: 45px;
+  }
+  footer .footer-top-data-inputbox {
+    width: 350px;
+    margin: 0 0;
+    padding: 3px 4px;
+  }
+  footer .input-group .form-control {
+    font-size: 16px;
+    padding: 0px 0px 0px 3px;
+    height: 35px;
+  }
+  footer .input-group-text {
+    width: 60px;
+    font-size: 11px;
+    height: 35px;
+    padding: 0 5px;
+  }
+  footer .footer-middle-data {
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  footer .footer-middle-data > div {
+    padding: 0 0 0 3px;
+    width: fit-content;
+  }
+  footer .footer-middle-databox-1 {
+    font-size: 14px;
+  }
+  footer .footer-middle-heading {
+    font-size: 18px;
+  }
+  .social-icon {
+    gap: 18px;
+  }
+  footer .social-icon-font {
+    font-size: 20px;
+  }
+}
