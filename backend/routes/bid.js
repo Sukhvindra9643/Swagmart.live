@@ -53,7 +53,7 @@ router.get( '/callback/', ( req, res ) => {
 	responseData = url_parts.query;
 
 	if ( responseData.payment_id ) {
-		return res.redirect('http://localhost:3000/payment-complete' );
+		return res.redirect('http://localhost:4000/payment-complete' );
 	}
 } );
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, {useEffect } from "react";
+// import axios from "axios";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -20,10 +20,10 @@ import ResetPassword from "./pages/ResetPassword";
 import Cart from "./components/Cart/Cart";
 import Shipping from "./components/Cart/Shipping";
 import ConfirmOrder from "./components/Cart/ConfirmOrder";
-import Buy from "./components/Cart/Buy";
 import OrderSuccess from "./components/Cart/OrderSuccess";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+// import Buy from "./components/Cart/Buy";
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 import { loadUser } from "./actions/userAction";
 import NotFound from "./components/Not Found/NotFound";
 import MyOrder from "./components/Order/MyOrders";
@@ -49,16 +49,16 @@ import SellerProductReviews from "./components/Seller/ProductReviews";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  // const [stripeApiKey, setStripeApiKey] = useState("");
   const dispatch = useDispatch();
  
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
-    setStripeApiKey(data.stripeApiKey);
-  }
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get("/api/v1/stripeapikey");
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
 
   useEffect(() => {
-    getStripeApiKey();
+    // getStripeApiKey();
     dispatch(loadUser());
     //eslint-disable-next-line
   }, [dispatch]);
@@ -103,7 +103,7 @@ function App() {
             {isAuthenticated && <Route path="seller/orders" element={<SellerOrderList />} />}
             {isAuthenticated && <Route path="seller/order/:id" element={<SellerProcessOrder />} />}
             {isAuthenticated && <Route path="seller/reviews" element={<SellerProductReviews />} />}
-            {isAuthenticated && <Route
+            {/* {isAuthenticated && <Route
               path="/payment/process"
               element={
                 stripeApiKey && (
@@ -112,7 +112,7 @@ function App() {
                   </Elements>
                 )
               }
-            />}
+            />} */}
              {isAuthenticated && 
               <Route
                 element={
