@@ -23,14 +23,14 @@ const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
 const payment = require("./routes/paymentRoute");
 const contact = require("./routes/contactRoute");
-
+const bid = require( './routes/bid' );
 
 app.use("/api/v1",product);
 app.use("/api/v1",user);
 app.use("/api/v1",order);
 app.use("/api/v1",payment);
 app.use("/api/v1",contact);
-
+app.use( '/api/v1/', bid );
 
 
 app.use(express.static(path.join(__dirname,"../frontend/build")));

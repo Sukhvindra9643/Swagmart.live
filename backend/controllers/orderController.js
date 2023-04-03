@@ -1,4 +1,5 @@
 const Order = require("../models/orderModel");
+const User = require("../models/userModel");
 const Product = require("../models/productModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -8,6 +9,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   req.body.user = req.user.id;
   req.body.paidAt = Date.now();
   const order = await Order.create(req.body);
+
   res.status(201).json({
     success: true,
     order,
@@ -129,8 +131,7 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
 
 // Seller Controllers
 exports.getAllSellerOrders = catchAsyncErrors(async (req, res, next) => {
-  const orders = await Order.find({user: req.user.id});
-
+  const orders = await Order.find({shopName: req.user.shopName});
   let totalAmount = 0;
 
   orders.forEach((order) => {

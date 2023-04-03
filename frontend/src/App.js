@@ -122,7 +122,7 @@ function App() {
                 }
               />}
           </Route>
-
+          <Route exact path="/payment-complete" element={<OrderSuccess />} />
           {/* <Route path="blogs" element={<Blogs />} /> */}
           {/* <Route path="compare-product" element={<CompareProduct />} /> */}
           {/* <Route path="wishlist" element={<Wishlist />} /> */}

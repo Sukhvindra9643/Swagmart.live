@@ -9,6 +9,9 @@ import { createOrder, clearErrors } from "../../actions/orderAction";
 import { useAlert } from "react-alert";
 import { v4 as uuidv4 } from "uuid";
 import { getTotals } from "../../slices/cartSlice";
+import axios from "axios";
+
+
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -25,7 +28,11 @@ const ConfirmOrder = () => {
   const tax = subtotal * 0;
 
   const totalPrice = subtotal + tax + shippingCharges;
- 
+  let cartItems = [];
+  for(let i = 0; i < cart.cartItems.length; i++) {
+    cartItems.push(cart.cartItems[i].shopName);
+  }
+  console.log(cartItems);
   const order = {
     shippingInfo,
     orderItems: cart,
@@ -33,11 +40,38 @@ const ConfirmOrder = () => {
     taxPrice: tax,
     shippingPrice: shippingCharges,
     totalPrice: totalPrice,
+    shopName: cartItems,
   };
+
   const onlinePayment = () => {
-    sessionStorage.setItem("orderInfo", JSON.stringify(order));
+    localStorage.setItem("order", JSON.stringify(order));
     navigate("/payment/process");
   };
+  const onBuyNowClick = () => {
+    order.paymentInfo = {
+      id: uuidv4(),
+      status: "succeeded",
+    };
+
+    // localStorage.setItem("order", JSON.stringify(order));
+		const data = {
+			purpose: 'Online Purchased',
+			amount: totalPrice,
+			buyer_name: user.name,
+			email: user.email,
+			phone: user.mobile,
+			user_id: user._id,
+			redirect_url: `http://localhost:4000/api/v1/callback?user_id=${user._id}`,
+			webhook_url: '/webhook/',
+		};
+
+		axios.post( '/api/v1/pay/',data)
+			.then( res => {
+				window.location.href = res.data;
+			} )
+			.catch( ( error ) => console.log( error.response.data ) );
+      localStorage.setItem("order", JSON.stringify(order));
+	};
   const codPayment = () => {
     order.paymentInfo = {
       id: uuidv4(),
@@ -127,6 +161,9 @@ const ConfirmOrder = () => {
             </button>
             <button onClick={onlinePayment} className="mt-2">
               Online
+            </button>
+            <button onClick={onBuyNowClick} className="mt-2">
+              Buy
             </button>
             {/* <button onSubmit={proceedToPayment(mode)}>Proceed</button> */}
           </div>

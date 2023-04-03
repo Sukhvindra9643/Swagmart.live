@@ -75,6 +75,10 @@ const orderSchema = new mongoose.Schema({
           type: Number,
           required: true,
         },
+        shopName: {
+          type: String,
+          required: true,
+        },
       },
     ],
     cartTotalAmount: {
@@ -117,6 +121,10 @@ const orderSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  shopName: [{
+    type: String,
+    required: true,
+  }],
   paymentInfo: {
     id: {
       type: String,
