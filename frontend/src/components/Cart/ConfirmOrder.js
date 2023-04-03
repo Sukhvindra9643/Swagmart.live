@@ -61,7 +61,7 @@ const ConfirmOrder = () => {
 			email: user.email,
 			phone: user.mobile,
 			user_id: user._id,
-			redirect_url: `https://www.swagmart.live/api/v1/callback?user_id=${user._id}`,
+			redirect_url: `http://68.183.95.79:4000/api/v1/callback?user_id=${user._id}`,
 			webhook_url: '/webhook/',
 		};
 

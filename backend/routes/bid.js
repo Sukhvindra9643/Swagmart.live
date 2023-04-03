@@ -35,6 +35,7 @@ router.post( '/pay', ( req, res ) => {
 		} else {
 			// Payment redirection link at response.payment_request.longurl
 			const responseData = JSON.parse( response );
+			console.log(responseData)
 			const redirectUrl = responseData.payment_request.longurl;
 			res.status( 200 ).json( redirectUrl );
 		}
@@ -53,7 +54,8 @@ router.get( '/callback/', ( req, res ) => {
 	responseData = url_parts.query;
 
 	if ( responseData.payment_id ) {
-		return res.redirect('http://localhost:4000/payment-complete' );
+		// return res.redirect('http://127.0.0.1:4000/payment-complete' );
+		return res.redirect('http://68.183.95.79:4000/payment-complete' );
 	}
 } );
 
