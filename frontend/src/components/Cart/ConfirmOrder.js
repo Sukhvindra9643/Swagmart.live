@@ -81,33 +81,38 @@ const ConfirmOrder = () => {
     dispatch(createOrder(order));
     navigate("/success");
   };
-  const onBuyNowClick = () => {
-    const data = {
+  const onBuyNowClick = async () => {
+    const orderData = {
       upiuid: "2147483647",
       token: "4ae699-be4c1a-2ab504-8d3ecd-d0b926",
       orderId: uuidv4(),
       txnAmount : 1,
       txnNote : "Test",
-      callback_url: "http://localhost:3000/payment-complete",
+      callback_url: "https://swagmart.live/payment-complete",
       key:"yWrtr6tGPR"
     }
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const {data} = await axios.post("/api/v1/pay", orderData, config);
 
-    axios.post( '/api/v1/pay/',data).then( res => {
-				data.checksum = res.data;
-        console.log("res.data",res.data)
-			} )
-			.catch( ( error ) => console.log(error.response.data ));
+    // axios.post( '/api/v1/pay/',data).then( res => {
+		// 		data.checksum = res.data;
+    //     console.log("res.data",res.data)
+		// 	} )
+		// 	.catch( ( error ) => console.log(error.response.data ));
 
       console.log(data);
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-    axios.post('https://upifast.in/stage/process', data,config).then(res => {
-      console.log("res",data);
-      localStorage.setItem("order", JSON.stringify(order));
-    }).catch( ( error ) => console.log(error));
+    orderData.checksum = data;
+
+    const {result} = await axios.post('https://upifast.in/stage/process', orderData);
+    console.log(result)
+    // axios.post('https://upifast.in/stage/process', data,config).then(res => {
+    //   console.log("res",data);
+    //   localStorage.setItem("order", JSON.stringify(order));
+    // }).catch( ( error ) => console.log(error));
 
 	};
   useEffect(() => {
