@@ -47,31 +47,31 @@ const ConfirmOrder = () => {
     localStorage.setItem("order", JSON.stringify(order));
     navigate("/payment/process");
   };
-  const onBuyNowClick = () => {
-    order.paymentInfo = {
-      id: uuidv4(),
-      status: "succeeded",
-    };
+  // const onBuyNowClick = () => {
+  //   order.paymentInfo = {
+  //     id: uuidv4(),
+  //     status: "succeeded",
+  //   };
 
-    // localStorage.setItem("order", JSON.stringify(order));
-		const data = {
-			purpose: 'Online Purchased',
-			amount: totalPrice,
-			buyer_name: user.name,
-			email: user.email,
-			phone: user.mobile,
-			user_id: user._id,
-			redirect_url: `http://68.183.95.79:4000/api/v1/callback?user_id=${user._id}`,
-			webhook_url: '/webhook/',
-		};
+  //   // localStorage.setItem("order", JSON.stringify(order));
+	// 	const data = {
+	// 		purpose: 'Online Purchased',
+	// 		amount: totalPrice,
+	// 		buyer_name: user.name,
+	// 		email: user.email,
+	// 		phone: user.mobile,
+	// 		user_id: user._id,
+	// 		redirect_url: `http://68.183.95.79:4000/api/v1/callback?user_id=${user._id}`,
+	// 		webhook_url: '/webhook/',
+	// 	};
 
-		axios.post( '/api/v1/pay/',data)
-			.then( res => {
-				window.location.href = res.data;
-			} )
-			.catch( ( error ) => console.log( error.response.data ) );
-      localStorage.setItem("order", JSON.stringify(order));
-	};
+	// 	axios.post( '/api/v1/pay/',data)
+	// 		.then( res => {
+	// 			window.location.href = res.data;
+	// 		} )
+	// 		.catch( ( error ) => console.log( error.response.data ) );
+  //     localStorage.setItem("order", JSON.stringify(order));
+	// };
   const codPayment = () => {
     order.paymentInfo = {
       id: uuidv4(),
@@ -81,7 +81,35 @@ const ConfirmOrder = () => {
     dispatch(createOrder(order));
     navigate("/success");
   };
+  const onBuyNowClick = () => {
+    const data = {
+      upiuid: "2147483647",
+      token: "4ae699-be4c1a-2ab504-8d3ecd-d0b926",
+      orderId: uuidv4(),
+      txnAmount : 1,
+      txnNote : "Test",
+      callback_url: "http://localhost:3000/payment-complete",
+      key:"yWrtr6tGPR"
+    }
 
+    axios.post( '/api/v1/pay/',data).then( res => {
+				data.checksum = res.data;
+        console.log("res.data",res.data)
+			} )
+			.catch( ( error ) => console.log(error.response.data ));
+
+      console.log(data);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+    axios.post('https://upifast.in/stage/process', data,config).then(res => {
+      console.log("res",data);
+      localStorage.setItem("order", JSON.stringify(order));
+    }).catch( ( error ) => console.log(error));
+
+	};
   useEffect(() => {
     if (error) {
       alert.error(error);
