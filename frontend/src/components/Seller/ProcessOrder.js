@@ -14,15 +14,15 @@ import { useAlert } from "react-alert";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstant";
-import "./processOrder.css"
+import "./processOrder.css";
 import { useParams } from "react-router-dom";
 
-const ProcessOrder = () => {
-  const {id} = useParams();
+const ProcessOrder = ({ user }) => {
+  const { id } = useParams();
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
-  // let orders = order["orderStatus"]
+
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -36,7 +36,6 @@ const ProcessOrder = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert();
-
   const [status, setStatus] = useState("");
 
   useEffect(() => {
@@ -55,6 +54,23 @@ const ProcessOrder = () => {
 
     dispatch(getOrderDetails(id));
   }, [dispatch, alert, error, id, isUpdated, updateError]);
+
+
+
+  const ordersDetails = JSON.parse(localStorage.getItem("ordersDetails"));
+
+  let index = 0;
+  for (let i = 0; i < ordersDetails.length; i++) {
+    if (ordersDetails[i][6] === id) {
+      index = i;
+    }
+  }
+
+  let o = [];
+  for (let i = 0; i < ordersDetails[index][2]; i++) {
+    o.push(ordersDetails);
+  }
+
   return (
     <Fragment>
       <MetaData title="Process Order" />
@@ -66,7 +82,12 @@ const ProcessOrder = () => {
           ) : (
             <div
               className="confirmOrderPage"
-              style={{display: order.orderStatus && order.orderStatus === "Delivered" ? "block" : "grid"}}
+              style={{
+                display:
+                  order.orderStatus && order.orderStatus === "Delivered"
+                    ? "block"
+                    : "grid",
+              }}
             >
               <div>
                 <div className="confirmshippingArea">
@@ -105,13 +126,18 @@ const ProcessOrder = () => {
                         {order.paymentInfo &&
                         order.paymentInfo.status === "succeeded"
                           ? "PAID"
-                          : order.orderStatus && order.orderStatus === "Delivered" ? "PAID":"NOT PAID"}
+                          : order.orderStatus &&
+                            order.orderStatus === "Delivered"
+                          ? "PAID"
+                          : "NOT PAID"}
                       </p>
                     </div>
 
                     <div>
                       <p>Amount:</p>
-                      <span>{order.totalPrice && order.totalPrice}</span>
+                      <span>
+                        {ordersDetails[index][1] && ordersDetails[index][1]}
+                      </span>
                     </div>
                   </div>
 
@@ -133,19 +159,34 @@ const ProcessOrder = () => {
                 <div className="confirmCartItems">
                   <Typography>Your Cart Items:</Typography>
                   <div className="confirmCartItemsContainer">
-                    {order.orderItems &&
-                      order.orderItems.cartItems.map((item,index) => (
+                    {/* {order.orderItems &&
+                      order.orderItems.cartItems.map((index) => (
                         <div key={index}>
-                          <img src={item.images[0].url} alt="Product" />
-                          <Link to={`/product/${item.product}`}>
-                            {item.name}
+                          <img src={ordersDetails[0][3]} alt="Product" />
+                          <Link>
+                            {ordersDetails[0][4]}
                           </Link>{" "}
                           <span>
-                            {item.cartQuantity} X ₹{item.price} ={" "}
-                            <b>₹{item.price * item.cartQuantity}</b>
+                            {ordersDetails[0][5]} X ₹{ordersDetails[0][1]} ={" "}
+                            <b>₹{ordersDetails[0][5] * ordersDetails[0][1]}</b>
                           </span>
                         </div>
-                      ))}
+                      ))} */}
+                    {o.map((item, i) => (
+                      <div key={item}>
+                        <img src={ordersDetails[index][3][i]} alt="Product" />
+                        <Link>{ordersDetails[index][4][i]}</Link>{" "}
+                        <span>
+                          {ordersDetails[index][5]} X ₹
+                          {ordersDetails[index][7][i]} ={" "}
+                          <b>
+                            ₹{" "}
+                            {ordersDetails[index][5] *
+                              ordersDetails[index][7][i]}
+                          </b>
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -158,7 +199,7 @@ const ProcessOrder = () => {
                 <form
                   className="updateOrderForm"
                   onSubmit={updateOrderSubmitHandler}
-                  style={{height:"60px", margin:"auto"}}
+                  style={{ height: "60px", margin: "auto" }}
                 >
                   <h1>Process Order</h1>
 
@@ -182,7 +223,7 @@ const ProcessOrder = () => {
                     disabled={
                       loading ? true : false || status === "" ? true : false
                     }
-                    style={{margin:"auto"}}
+                    style={{ margin: "auto" }}
                   >
                     Process
                   </Button>

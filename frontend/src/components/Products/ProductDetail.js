@@ -164,6 +164,7 @@ const ProductDetail = ({user}) => {
                 className="btn btn-primary d-inline ml-4"
                 onClick={handleAddToCart}
                 style={{ width: "155px" }}
+                disabled={product.stock <= 0}
               >
                 Add to Cart
               </button>

@@ -59,7 +59,7 @@ const UpdateProduct = () => {
   ];
   const popularties = ["Featured", "Special", "Bestselling"];
   const productId = id;
-
+  
   useEffect(() => {
     if (product && product._id !== productId) {
       dispatch(getProductDetails(productId));

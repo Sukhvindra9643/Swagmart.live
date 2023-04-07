@@ -37,7 +37,7 @@ const Payment = () => {
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
   };
-
+  
   const order = {
     shippingInfo,
     orderItems: cart,
@@ -45,6 +45,7 @@ const Payment = () => {
     taxPrice: orderInfo.tax,
     shippingPrice: orderInfo.shippingCharges,
     totalPrice: orderInfo.totalPrice,
+    shopName: orderInfo.shopName,
   };
 
   const submitHandler = async (e) => {

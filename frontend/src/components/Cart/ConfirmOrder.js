@@ -9,8 +9,6 @@ import { createOrder, clearErrors } from "../../actions/orderAction";
 import { useAlert } from "react-alert";
 import { v4 as uuidv4 } from "uuid";
 import { getTotals } from "../../slices/cartSlice";
-import axios from "axios";
-
 
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
@@ -32,7 +30,6 @@ const ConfirmOrder = () => {
   for(let i = 0; i < cart.cartItems.length; i++) {
     cartItems.push(cart.cartItems[i].shopName);
   }
-  console.log(cartItems);
   const order = {
     shippingInfo,
     orderItems: cart,
@@ -44,7 +41,7 @@ const ConfirmOrder = () => {
   };
 
   const onlinePayment = () => {
-    localStorage.setItem("order", JSON.stringify(order));
+    sessionStorage.setItem("orderInfo", JSON.stringify(order));
     navigate("/payment/process");
   };
   // const onBuyNowClick = () => {
@@ -67,7 +64,7 @@ const ConfirmOrder = () => {
 
 	// 	axios.post( '/api/v1/pay/',data)
 	// 		.then( res => {
-	// 			window.location.href = res.data;
+				// window.location.href = res.data;
 	// 		} )
 	// 		.catch( ( error ) => console.log( error.response.data ) );
   //     localStorage.setItem("order", JSON.stringify(order));
@@ -77,44 +74,10 @@ const ConfirmOrder = () => {
       id: uuidv4(),
       status: "COD",
     };
-
+  
     dispatch(createOrder(order));
     navigate("/success");
   };
-  const onBuyNowClick = async () => {
-    const orderData = {
-      upiuid: "2147483647",
-      token: "4ae699-be4c1a-2ab504-8d3ecd-d0b926",
-      orderId: uuidv4(),
-      txnAmount : 1,
-      txnNote : "Test",
-      callback_url: "https://swagmart.live/payment-complete",
-      key:"yWrtr6tGPR"
-    }
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const {data} = await axios.post("/api/v1/pay", orderData, config);
-
-    // axios.post( '/api/v1/pay/',data).then( res => {
-		// 		data.checksum = res.data;
-    //     console.log("res.data",res.data)
-		// 	} )
-		// 	.catch( ( error ) => console.log(error.response.data ));
-
-      console.log(data);
-    orderData.checksum = data;
-
-    const {result} = await axios.post('https://upifast.in/stage/process', orderData);
-    console.log(result)
-    // axios.post('https://upifast.in/stage/process', data,config).then(res => {
-    //   console.log("res",data);
-    //   localStorage.setItem("order", JSON.stringify(order));
-    // }).catch( ( error ) => console.log(error));
-
-	};
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -122,6 +85,7 @@ const ConfirmOrder = () => {
     }
     dispatch(getTotals());
   }, [dispatch, cart, error, alert]);
+
   return (
     <Fragment>
       <MetaData title="Confirm Order" />
@@ -195,9 +159,9 @@ const ConfirmOrder = () => {
             <button onClick={onlinePayment} className="mt-2">
               Online
             </button>
-            <button onClick={onBuyNowClick} className="mt-2">
+            {/* <button onClick={onBuyNowClick} className="mt-2">
               Buy
-            </button>
+            </button> */}
             {/* <button onSubmit={proceedToPayment(mode)}>Proceed</button> */}
           </div>
         </div>

@@ -3,77 +3,17 @@ const User = require("../models/userModel");
 const Product = require("../models/productModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-
+const SellerOrder = require("../models/sellerOrder")
 // Create New Order
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
-  // const {
-  //   shippingInfo,
-  //   orderItems,
-  //   paymentInfo,
-  //   itemsPrice,
-  //   taxPrice,
-  //   shippingPrice,
-  //   totalPrice,
-  // } = req.body;
   req.body.user = req.user.id;
   req.body.paidAt = Date.now();
-
-  // const { cartItems } = orderItems;
-  // const shopNo = ["Yash Garments", "Garg Garments"];
-
-  // let orderproducts = [];
-  // let orderproducts2 = [];
-
-  // for (let i = 0; i < shopNo.length; i++) {
-  //   for (let j = 0; j < cartItems.length; j++) {
-  //     const order = cartItems[j];
-  //     if (order.shopName === shopNo[i]) {
-  //       orderproducts.push(order);
-  //     }
-  //   }
-  //   orderproducts2.push(orderproducts);
-  //   orderproducts = [];
-  // }
-  // let order;
-  // for (let i = 0; i < shopNo.length; i++) {
-  //   orderItems = orderproducts2[i];
-  //   order = await Order.create({
-  //     shippingInfo,
-  //     orderItems,
-  //     paymentInfo,
-  //     paidAt: Date.now(),
-  //     itemsPrice,
-  //     taxPrice,
-  //     shippingPrice,
-  //     totalPrice,
-  //   });
-  //   console.log(order);
-  // }
   const order = await Order.create(req.body);
-
+    
   res.status(201).json({
     success: true,
     order,
   });
-  //   const {
-  //     shippingInfo,
-  //     orderItems,
-  //     paymentInfo,
-  //     itemsPrice,
-  //     taxPrice,
-  //     shippingPrice,
-  //     totalPrice,
-  //   } = req.body;
-  //   const order = await Order.create({
-  //     shippingInfo,
-  //     orderItems,
-  //     paymentInfo,
-  //     paidAt: Date.now(),
-  //     itemsPrice,
-  //     taxPrice,
-  //     shippingPrice,
-  //     totalPrice,
-  //   });
 });
 
 // Get Single Order

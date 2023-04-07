@@ -33,9 +33,15 @@ const Dashboard = ({user}) => {
 
   let totalAmount = 0;
   orders &&
-    orders.forEach((item) => {
-      totalAmount += item.totalPrice;
+    orders.forEach((item,index) => {
+      for (let i = 0; i < item.orderItems.cartItems.length; i++) {
+        totalAmount += (item.orderItems.cartItems[i].shopName === user.shopName
+            ? item.orderItems.cartItems[i].price*item.orderItems.cartItems[i].cartQuantity
+            : 0);
+        }
+      // totalAmount += (item.orderItems.cartItems[index].shopName === user.shopName)?item.orderItems.cartItems[index].price:0;
     });
+  
     let width = window.innerWidth;
   return (
     <div className="dashboard">

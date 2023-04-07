@@ -4,30 +4,24 @@ import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
 import MetaData from "../MetaData";
 import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
 import SideBar from "./Sidebar";
 import {
-  deleteSellerOrder,
   getAllSellerOrders,
   clearErrors,
 } from "../../actions/orderAction";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstant";
 
-const OrderList = () => {
+const OrderList = ({ user }) => {
   const dispatch = useDispatch();
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const alert = useAlert();
 
   const { error, orders } = useSelector((state) => state.allOrders);
 
   const { error: deleteError, isDeleted } = useSelector((state) => state.order);
 
-  const deleteOrderHandler = (id) => {
-    dispatch(deleteSellerOrder(id));
-  };
 
   useEffect(() => {
     if (error) {
@@ -92,14 +86,6 @@ const navigate = useNavigate()
             <Link to={`/seller/order/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
-
-            <Button
-              onClick={() =>
-                deleteOrderHandler(params.getValue(params.id, "id"))
-              }
-            >
-              <DeleteIcon />
-            </Button>
           </Fragment>
         );
       },
@@ -107,20 +93,52 @@ const navigate = useNavigate()
   ];
 
   const rows = [];
-
+  let orderDetails = [];
+  let price = 0;
+  let cartLength = 0;
+  let shopName = "";
+  let itemUrl = [];
+  let name = [];
+  let quantity = 0;
+  let orderId = "";
+  let productPrice = [];
   orders &&
     orders.forEach((item) => {
+      for (let i = 0; i < item.orderItems.cartItems.length; i++) {
+        shopName = item.orderItems.cartItems[i].shopName;
+
+        price =
+          price +
+          (item.orderItems.cartItems[i].shopName === user.shopName
+            ? item.orderItems.cartItems[i].price*item.orderItems.cartItems[i].cartQuantity
+            : 0);
+        cartLength += item.orderItems.cartItems[i].shopName === user.shopName ? 1 : 0;
+        (shopName === user.shopName)?productPrice.push(item.orderItems.cartItems[i].price):console.log();
+        (shopName === user.shopName)?itemUrl.push(item.orderItems.cartItems[i].images[0].url):console.log();
+        (shopName === user.shopName)?name.push(item.orderItems.cartItems[i].name):console.log();
+        quantity = item.orderItems.cartItems[i].cartQuantity;
+        orderId = item._id;
+        (shopName === user.shopName)
+          ? orderDetails.push([shopName,price,cartLength,itemUrl,name,quantity,orderId,productPrice])
+          : console.log();
+      }
       rows.push({
         id: item._id,
-        itemsQty: item.orderItems.cartItems.length,
-        amount: item.totalPrice,
+        itemsQty: cartLength,
+        amount: price,
         status: item.orderStatus,
       });
+      // orderDetails.push([shopName,price,cartLength])
+      price = 0;
+      cartLength = 0;
+      name = [];
+      productPrice = [];
+      itemUrl = [];
     });
-
+  localStorage.setItem("ordersDetails", JSON.stringify(orderDetails));
   return (
     <Fragment>
-      <MetaData title={`ALL ORDERS - Admin`} />
+      <MetaData title={`ALL ORDERS - Seller`} />
 
       <div className="dashboard">
         <SideBar />
@@ -132,8 +150,8 @@ const navigate = useNavigate()
             columns={columns}
             pageSize={7}
             disableSelectionOnClick
-            className="productListTable"  
-            autoHeight          
+            className="productListTable"
+            autoHeight
           />
         </div>
       </div>

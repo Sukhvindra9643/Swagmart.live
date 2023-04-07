@@ -4,19 +4,27 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 import { addToCart } from "../../slices/cartSlice";
-import "../../pages/Home.css"
+import "../../pages/Home.css";
 
 const ProductCard = ({ product, grid }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { keyword } = useParams();
   let location = useLocation();
-  const [like,setLike] = useState(["https://res.cloudinary.com/dk0o7tdks/image/upload/v1675353208/images/wish_vdcmao.png","16px","16px"]);
+  const [like, setLike] = useState([
+    "https://res.cloudinary.com/dk0o7tdks/image/upload/v1675353208/images/wish_vdcmao.png",
+    "16px",
+    "16px",
+  ]);
   let classname;
-  if(keyword){
-    classname = `${location.pathname === `/store/${keyword}`? `gr-${grid}`:`gr-${grid}`}`;
-  }else{
-    classname = `${location.pathname === `/store`? `gr-${grid}`:`gr-${grid}`}`;
+  if (keyword) {
+    classname = `${
+      location.pathname === `/store/${keyword}` ? `gr-${grid}` : `gr-${grid}`
+    }`;
+  } else {
+    classname = `${
+      location.pathname === `/store` ? `gr-${grid}` : `gr-${grid}`
+    }`;
   }
 
   const addToCartHandler = () => {
@@ -32,11 +40,17 @@ const ProductCard = ({ product, grid }) => {
         <div className="wishlist-icon  position-absolute">
           <Link>
             <img
-              style={{width:`${like[1]}`, height:`${like[2]}`}}
+              style={{ width: `${like[1]}`, height: `${like[2]}` }}
               className=""
               src={like[0]}
               alt="wishlist"
-              onClick={()=>setLike(["https://res.cloudinary.com/dk0o7tdks/image/upload/v1675446692/images/IMG_20230203_231950_987_niukas.png","22px","16px"])}
+              onClick={() =>
+                setLike([
+                  "https://res.cloudinary.com/dk0o7tdks/image/upload/v1675446692/images/IMG_20230203_231950_987_niukas.png",
+                  "22px",
+                  "16px",
+                ])
+              }
             />
           </Link>
         </div>
@@ -73,12 +87,16 @@ const ProductCard = ({ product, grid }) => {
                 alt="view"
               />
             </Link> */}
-            <Link to={location} onClick={addToCartHandler}>
-              <img
-                src="https://res.cloudinary.com/dk0o7tdks/image/upload/v1675353206/images/add-cart_mhxvbg.png"
-                alt="addcart"
-              />
-            </Link>
+            {product.stock > 0 ? (
+              <Link to={location} onClick={addToCartHandler}>
+                <img
+                  src="https://res.cloudinary.com/dk0o7tdks/image/upload/v1675353206/images/add-cart_mhxvbg.png"
+                  alt="addcart"
+                />
+              </Link>
+            ) : (
+              <span>0</span>
+            )}
           </div>
         </div>
       </Link>

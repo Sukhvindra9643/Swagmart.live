@@ -50,7 +50,7 @@ const reducer = combineReducers({
   review: reviewReducer,
   newQuery:newQueryReducer,
   allqueries:getContactQueryReducer,
-  deleteQuery:deleteQueryReducer
+  deleteQuery:deleteQueryReducer,
 });
 
 const initialState = {
