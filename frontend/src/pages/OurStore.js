@@ -53,12 +53,18 @@ const OurStore = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 100000]);
   const [subcategory, setSubCategory] = useState("");
-  const [stock, setStock] = useState("");
+  const [stock, setStock] = useState("true");
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const [ratings, setRatings] = useState(0);
   const [brand, setBrand] = useState("");
   const [sortFilter, setSortFilter] = useState("");
+  let width = window.innerWidth;
+  let g = width < 600 ? 6 : 3;
+  console.log("g",g)
+  const [grid, setGrid] = useState(g);
+  const [filterShowHide, setFilterShowHide] = useState(`${width <=600 ? "none":"block"}`);
+
 
   const { products, loading, error, productsCount, resultPerPage } =
     useSelector((state) => state.products);
@@ -82,7 +88,7 @@ const OurStore = () => {
     setSubCategory("");
     setColor("");
     setSize("");
-    setStock("");
+    setStock("true");
     setBrand("");
     setSortFilter("");
   };
@@ -122,11 +128,10 @@ const OurStore = () => {
     size,
     brand,
     sortFilter,
+    grid
   ]);
   // eslint-disable-next-line
-  const [grid, setGrid] = useState(3);
-  let width = window.innerWidth;
-  const [filterShowHide, setFilterShowHide] = useState(`${width <=600 ? "none":"block"}`);
+  
  
   const handleFilterBox = () => {
     if (filterShowHide === "none") setFilterShowHide("block");

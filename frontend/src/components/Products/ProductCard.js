@@ -17,6 +17,7 @@ const ProductCard = ({ product, grid }) => {
     "16px",
   ]);
   let classname;
+  console.log(grid)
   if (keyword) {
     classname = `${
       location.pathname === `/store/${keyword}` ? `gr-${grid}` : `gr-${grid}`

@@ -1,9 +1,8 @@
 const Order = require("../models/orderModel");
-const User = require("../models/userModel");
 const Product = require("../models/productModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const SellerOrder = require("../models/sellerOrder")
+
 // Create New Order
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   req.body.user = req.user.id;

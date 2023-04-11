@@ -33,7 +33,7 @@ const ProductDetail = ({user}) => {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
-
+    console.log(product)
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
@@ -45,7 +45,7 @@ const ProductDetail = ({user}) => {
 
   const increaseQuantity = () => {
     if (product.stock <= quantity) return;
-
+    
     const qty = quantity + 1;
     setQuantity(qty);
   };
@@ -105,8 +105,8 @@ const ProductDetail = ({user}) => {
           <div className="row f-flex justify-content-around">
             <Carousel>
               {product.images && product.images.map((item,i)=>(
-                 <div>
-                 <img key={item.public_id} src={item.url} alt="products"/>
+                 <div key={i}>
+                 <img src={item.url} alt="products"/>
                </div>
               ))}
             </Carousel>
@@ -151,12 +151,15 @@ const ProductDetail = ({user}) => {
                   readOnly
                 />
 
-                <span
+                <button
+                  type="button"
+                  id="increase"
                   className="btn btn-primary plus"
+                  style={{cursor:"pointer"}}
                   onClick={increaseQuantity}
                 >
                   +
-                </span>
+                </button>
               </div>
               <button
                 type="button"
@@ -183,9 +186,9 @@ const ProductDetail = ({user}) => {
               <h4 className="mt-2">Description:</h4>
               <p>{product.description}</p>
               <hr />
-              {/* <p id="product_seller mb-3">
-            Sold by: <strong>Amazon</strong>
-          </p> */}
+              <p id="product_seller mb-3">
+            Sold by: <strong>{product.shopName}</strong>
+          </p>
 
               <button
                 id="review_btn"
@@ -237,8 +240,8 @@ const ProductDetail = ({user}) => {
             {product.reviews && product.reviews[0] ? (
               <div className="reviews" style={{ marginBottom: "50px" }}>
                 {product.reviews &&
-                  product.reviews.map((review) => (
-                    <ReviewCard key={review._id} review={review} user={user}/>
+                  product.reviews.map((review,index) => (
+                    <ReviewCard key={index} review={review} user={user}/>
                   ))}
               </div>
             ) : (
