@@ -33,6 +33,7 @@ app.use("/api/v1",contact);
 app.use( '/api/v1/', bid );
 
 
+
 app.use(express.static(path.join(__dirname,"../frontend/build")));
 
 app.get("*",(req,res)=>{

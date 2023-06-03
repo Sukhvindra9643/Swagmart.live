@@ -56,86 +56,8 @@ const Home = () => {
         <Fragment>
           <section className="home-wrapper-1">
             <div className="container-xxl">
-              <div className="main-banner d-flex justify-content-between align-items-center gap-10">
-                <div className=" col-6 main-banner-col-1">
-                  <div className="position-relative">
-                    <img
-                      src="images/main-banner-1.jpg"
-                      className="img-fluid rounded-3"
-                      alt="main banner"
-                    />
-                    <div className="main-banner-content position-absolute">
-                      <h4>SUPERCHARGED FOR PROS</h4>
-                      <h5>Ear Buds</h5>
-                      <p>
-                        From ₹{99} <br />
-                        or ₹{parseInt(99 / 2)}/mo <br />{" "}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6 main-banner-col-2">
-                  <div className="d-flex flex-wrap gap-10  align-items-center">
-                    <div className="small-banner position-relative">
-                      <img
-                        src="images/catbanner-01.jpg"
-                        className="img-fluid rounded-3"
-                        alt="main banner"
-                      />
-                      <div className="small-banner-content position-absolute">
-                        <h4>BEST SELL</h4>
-                        <h5>Laptop</h5>
-                        <p>
-                          From ₹600 <br />
-                          or ₹{parseInt(600 / 2)}/mo
-                        </p>
-                      </div>
-                    </div>
-                    <div className="small-banner position-relative">
-                      <img
-                        src="images/catbanner-02.jpg"
-                        className="img-fluid rounded-3"
-                        alt="main banner"
-                      />
-                      <div className="small-banner-content position-absolute">
-                        <h4>NEW ARRIVAL</h4>
-                        <h5>Smart Watch</h5>
-                        <p>
-                          From ₹40 <br /> or ₹{parseInt(40 / 2)}/mo
-                        </p>
-                      </div>
-                    </div>
-                    <div className="small-banner position-relative">
-                      <img
-                        src="images/catbanner-03.jpg"
-                        className="img-fluid rounded-3"
-                        alt="main banner"
-                      />
-                      <div className="small-banner-content position-absolute">
-                        <h4>10% Off</h4>
-                        <h5>Tablet</h5>
-                        <p>
-                          From ₹150 <br />
-                          or ₹{parseInt(150 / 2)}/mo
-                        </p>
-                      </div>
-                    </div>
-                    <div className="small-banner position-relative">
-                      <img
-                        src="images/catbanner-04.jpg"
-                        className="img-fluid rounded-3"
-                        alt="main banner"
-                      />
-                      <div className="small-banner-content position-absolute">
-                        <h4>20% Off</h4>
-                        <h5>Headphone</h5>
-                        <p>
-                          From ₹50 <br />₹{parseInt(50 / 2)}/mo
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="main-banner d-flex justify-content-center w-100 align-items-center gap-10">
+                <img src="images/herobanner.png" alt="" className="w-100"/>
               </div>
             </div>
           </section>
@@ -229,7 +151,7 @@ const Home = () => {
                 <div className="home-featured-products">
                   {products &&
                     products.map((product) => (
-                      <ProductCard key={product._id} product={product} />
+                      product.popularity === "featured" && <ProductCard key={product._id} product={product} />
                     ))}
                 </div>
               </div>
@@ -246,7 +168,7 @@ const Home = () => {
               <div className="row special-product">
                 {products &&
                   products.map((product) => (
-                    <SpecialProduct key={product._id} product={product} />
+                    product.popularity === "special" && <SpecialProduct key={product._id} product={product} />
                   ))}
               </div>
             </div>
@@ -262,7 +184,7 @@ const Home = () => {
                 <div className="home-popular-products">
                   {products &&
                     products.map((product) => (
-                      <ProductCard key={product._id} product={product} />
+                      product.popularity === "bestselling" && <ProductCard key={product._id} product={product} />
                     ))}
                 </div>
               </div>

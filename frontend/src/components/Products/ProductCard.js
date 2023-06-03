@@ -17,7 +17,7 @@ const ProductCard = ({ product, grid }) => {
     "16px",
   ]);
   let classname;
-  console.log(grid)
+
   if (keyword) {
     classname = `${
       location.pathname === `/store/${keyword}` ? `gr-${grid}` : `gr-${grid}`
@@ -59,7 +59,7 @@ const ProductCard = ({ product, grid }) => {
           <img src={product.images[0].url} alt={product && product.name} />
           <img src={product.images[0].url} alt="product" />
         </div>
-        <div className="product-details ms-1">
+        <div className="product-details ms-1 mt-4">
           <h6 className="brand text-danger">{product && product.brand}</h6>
           <h5 className="product-title text-dark">{product && product.name}</h5>
           <ReactStars

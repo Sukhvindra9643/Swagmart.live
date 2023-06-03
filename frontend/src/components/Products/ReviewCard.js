@@ -21,14 +21,17 @@ const ReviewCard = ({ review}) => {
     }
    
   }, [dispatch,error,alert])
+  console.log("review",typeof review.comment)
   return (
-    <div className="reviewCard">
+    <>
+    {user && <div className="reviewCard">
       <img src={user !== null ? user.avatar.url : "https://res.cloudinary.com/dk0o7tdks/image/upload/v1678017177/images/umoau3sk3sczsqvz6w8z.png"} alt="User" />
 
       <p>{review.name}</p>
       <Rating {...options} />
-      <span className="reviewCardComment">{review.comment}</span>
-    </div>
+      {review.comment !== "undefined" ? (<span className="reviewCardComment">{review.comment}</span>):(<span className="reviewCardComment">No Comment</span>)}
+    </div>}
+    </>
   );
 };
 

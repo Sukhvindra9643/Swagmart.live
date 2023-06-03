@@ -44,31 +44,6 @@ const ConfirmOrder = () => {
     sessionStorage.setItem("orderInfo", JSON.stringify(order));
     navigate("/payment/process");
   };
-  // const onBuyNowClick = () => {
-  //   order.paymentInfo = {
-  //     id: uuidv4(),
-  //     status: "succeeded",
-  //   };
-
-  //   // localStorage.setItem("order", JSON.stringify(order));
-	// 	const data = {
-	// 		purpose: 'Online Purchased',
-	// 		amount: totalPrice,
-	// 		buyer_name: user.name,
-	// 		email: user.email,
-	// 		phone: user.mobile,
-	// 		user_id: user._id,
-	// 		redirect_url: `http://68.183.95.79:4000/api/v1/callback?user_id=${user._id}`,
-	// 		webhook_url: '/webhook/',
-	// 	};
-
-	// 	axios.post( '/api/v1/pay/',data)
-	// 		.then( res => {
-				// window.location.href = res.data;
-	// 		} )
-	// 		.catch( ( error ) => console.log( error.response.data ) );
-  //     localStorage.setItem("order", JSON.stringify(order));
-	// };
   const codPayment = () => {
     order.paymentInfo = {
       id: uuidv4(),
@@ -159,10 +134,6 @@ const ConfirmOrder = () => {
             <button onClick={onlinePayment} className="mt-2">
               Online
             </button>
-            {/* <button onClick={onBuyNowClick} className="mt-2">
-              Buy
-            </button> */}
-            {/* <button onSubmit={proceedToPayment(mode)}>Proceed</button> */}
           </div>
         </div>
       </div>

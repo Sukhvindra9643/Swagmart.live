@@ -20,7 +20,7 @@ const prices = [
   [5001, 10000],
   [10001, 100000],
 ];
-const categories = [["Laptop","Phone", "SmartWatch","Camera"],["Watch","Bracelet"], ["T-Shirt","Pants","Top","Bottom"],["Oil","Masale"]];
+const categories = [["Laptop", "Phone", "SmartWatch", "Camera"], ["Watch", "Bracelet"], ["T-Shirt", "Pants", "Top", "Bottom"], ["Oil", "Masale"]];
 const colors = [
   "red",
   "green",
@@ -61,9 +61,9 @@ const OurStore = () => {
   const [sortFilter, setSortFilter] = useState("");
   let width = window.innerWidth;
   let g = width < 600 ? 6 : 3;
-  console.log("g",g)
+
   const [grid, setGrid] = useState(g);
-  const [filterShowHide, setFilterShowHide] = useState(`${width <=600 ? "none":"block"}`);
+  const [filterShowHide, setFilterShowHide] = useState(`${width <= 600 ? "none" : "block"}`);
 
 
   const { products, loading, error, productsCount, resultPerPage } =
@@ -93,7 +93,16 @@ const OurStore = () => {
     setSortFilter("");
   };
   let count = productsCount;
-
+  let instock = 0;
+  let outofstock = 0;
+  products.map((product) => {
+    if (product.stock > 0) {
+      instock++;
+    } else {
+      outofstock++;
+    }
+    return null;
+  });
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -131,8 +140,7 @@ const OurStore = () => {
     grid
   ]);
   // eslint-disable-next-line
-  
- 
+
   const handleFilterBox = () => {
     if (filterShowHide === "none") setFilterShowHide("block");
     if (filterShowHide === "block") setFilterShowHide("none");
@@ -154,59 +162,48 @@ const OurStore = () => {
               <div className="filter-card mb-3">
                 <h3 className="filter-title">Shop By Categories</h3>
                 <div className="d-flex align-items-center gap-10">
-                <div className="d-flex flex-column">
-                  {categories.map((category, i) => (
-                    category.map((c, i) => (
-                    <input
-                      style={{
-                        width: "1.20em",
-                        height: "1.20em",
-                        marginRight: "10px",
-                      }}
-                      className="form-check-input"
-                      type="radio"
-                      name="subcategory"
-                      key={i}
-                      onClick={() => setSubCategory(c.toLowerCase())}
-                    />
-                  ))))}
+                  <div className="d-flex flex-column">
+                    {categories.map((category, i) => (
+                      category.map((c, i) => (
+                        <input
+                          style={{
+                            width: "1.20em",
+                            height: "1.20em",
+                            marginRight: "10px",
+                          }}
+                          className="form-check-input"
+                          type="radio"
+                          name="subcategory"
+                          key={i}
+                          onClick={() => setSubCategory(c.toLowerCase())}
+                        />
+                      ))))}
+                  </div>
+                  <div
+                    className="d-flex flex-column mb-0"
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "24px",
+                      marginTop: "5px",
+                    }}
+                  >
+                    {categories.map((category, i) => (
+                      category.map((c, i) => (
+                        <label
+                          className="form-check-label"
+                          htmlFor="subcategory"
+                          key={i}
+                        >
+                          {c}
+                        </label>
+                      ))))}
+                  </div>
                 </div>
-                <div
-                  className="d-flex flex-column mb-0"
-                  style={{
-                    fontSize: "15px",
-                    lineHeight: "24px",
-                    marginTop: "5px",
-                  }}
-                >
-                  {categories.map((category, i) => (
-                    category.map((c, i) => (
-                    <label
-                      className="form-check-label"
-                      htmlFor="subcategory"
-                      key={i}
-                    >
-                      {c}
-                    </label>
-                  ))))}
-                </div>
-              </div>
               </div>
               <div className="filter-card mb-3">
                 <h3 className="filter-title">Filter by</h3>
-                <h5 className="sub-title">Clear Filter</h5>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="clear-filter"
-                    value=""
-                    id="clear-filter"
-                    onChange={ResetFilter}
-                  />
-                  <label className="form-check-label" htmlFor="clear-filter">
-                    Clear Filter
-                  </label>
+                <div className="my-2">
+                  <button className="btn btn-primary" onClick={ResetFilter}>Clear Filter</button>
                 </div>
                 <div>
                   <h5 className="sub-title">Availability</h5>
@@ -217,10 +214,12 @@ const OurStore = () => {
                       name="stock"
                       value={stock}
                       id="instock"
+                      checked={stock === "true" ? true : false}
                       onChange={InStock}
                     />
+
                     <label className="form-check-label" htmlFor="instock">
-                      In Stock(1)
+                      In Stock({stock === "true" ? instock : count - outofstock})
                     </label>
                   </div>
                   <div className="form-check">
@@ -233,7 +232,7 @@ const OurStore = () => {
                       onChange={OutStock}
                     />
                     <label className="form-check-label" htmlFor="outofstock">
-                      Out Of Stock(0)
+                      Out Of Stock({stock === "true" ? count - instock : outofstock})
                     </label>
                   </div>
                   <h5 className="sub-title">Price</h5>
@@ -278,7 +277,7 @@ const OurStore = () => {
                     <div className="d-flex flex-wrap">
                       <div className="colors">
                         <ul className="colors">
-                          {colors.map((color,i) => (
+                          {colors.map((color, i) => (
                             <li
                               style={{ backgroundColor: color }}
                               key={i}
@@ -312,7 +311,7 @@ const OurStore = () => {
                       className="d-flex flex-column mb-0"
                       style={{ fontSize: "15px", lineHeight: "22px" }}
                     >
-                      {sizes.map((size,i) => (
+                      {sizes.map((size, i) => (
                         <label
                           className="form-check-label"
                           htmlFor="color-1"
@@ -328,7 +327,7 @@ const OurStore = () => {
               <div className="filter-card mb-3">
                 <h3 className="filter-title">Product Brand</h3>
                 <div className="d-flex flex-wrap gap-10">
-                  {brands.map((brand,i) => (
+                  {brands.map((brand, i) => (
                     <div
                       className="product-tags d-flex flex-wrap align-items-center"
                       key={i}
@@ -366,7 +365,7 @@ const OurStore = () => {
                       id=""
                       onChange={filterHandler}
                     >
-                      {sortby.map((item,i) => (
+                      {sortby.map((item, i) => (
                         <option value={item.toLowerCase()} key={i}>{item}</option>
                       ))}
                     </select>

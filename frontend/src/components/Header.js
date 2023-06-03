@@ -36,7 +36,7 @@ const Header = () => {
           <div className="row" style={{ height: "55px" }}>
             <div className="col-6">
               <p className="text-white mb-0">
-                Free Shipping Over ₹100 & Free Returns
+                Free Shipping Over ₹500 & Free Returns
               </p>
             </div>
             <div className="col-6">

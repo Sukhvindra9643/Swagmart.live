@@ -57,7 +57,7 @@ const Footer = () => {
                   sukhvindrasingh8670@gmail.com
                 </a>
 
-                <div className="social-icon d-flex align-items-center justify-content-center gap-30 mt-4">
+                <div className="social-icon d-flex align-items-center gap-30 mt-4">
                   <a className="text-white" href="https://www.linkedin.com/in/sukhvindra-singh-42b3b3219/">
                     <BsLinkedin className="social-icon-font"/>
                   </a>

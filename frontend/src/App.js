@@ -51,7 +51,7 @@ import ShippingPolicy from "./pages/ShippingPolicy"
 import PrivacyPolicy from "./pages/PrivacyPolicy.js"
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  const [stripeApiKey, setStripeApiKey] = useState("pk_live_51LwOuRSIehZlbt9Och099f1qyjG6vedC9H6grah8d4aMvkmCav6C5LZEtvt8YpCHXtTnK5KmdwvW5l2eWOFfM6KW00Zclx1low");
   const dispatch = useDispatch();
  
   async function getStripeApiKey() {
