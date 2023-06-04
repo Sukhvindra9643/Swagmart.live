@@ -37,7 +37,8 @@ const Contacts = () => {
           <div className="row">
             <div className="col-12">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28626.07587222847!2d79.22649140324762!3d26.253240543500265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976244b60ca591d%3A0x95f762b23dbba3f2!2sGohani%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1675017772147!5m2!1sen!2sin"
+                // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28626.07587222847!2d79.22649140324762!3d26.253240543500265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976244b60ca591d%3A0x95f762b23dbba3f2!2sGohani%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1675017772147!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d10401.7667736513!2d77.24882371828967!3d28.536616814664182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x390ce3e04fd03c5b%3A0x788bedc50516dff5!2sKalka%20Ji%20Depot%20Govindpuri%2C%20Govindpuri%2C%20New%20Delhi%2C%20Delhi!3m2!1d28.5383!2d77.2658!5e0!3m2!1sen!2sin!4v1685880967783!5m2!1sen!2sin"
                 width="600"
                 height="450"
                 title="myFrame"
@@ -101,18 +102,18 @@ const Contacts = () => {
                       <li className="d-flex gap-15 align-items-center mb-3">
                         <AiOutlineHome className="fs-5"/>
                         <address className="mb-0">
-                        Village Gohani Post Sarawan District jalaun UP
+                        39/1 Govindpuri kalka ji depot New Delhi 110019
                         </address>
                       </li>
                       <li className="d-flex gap-15 align-items-center mb-3">
                         <BiPhoneCall className="fs-5"/>
-                        <a href="tel :- +91 9643315148">+91 9643315148</a>
+                        <a href="tel :- +91 9958717765">+91 9958717765</a>
                       </li>
                       <li className="d-flex gap-15 align-items-center mb-3">
                         <AiOutlineMail className="fs-5" />
-                        <a href="mailto :- sukhvindrasngh8670@gmail.com">
+                        <a href="mailto :- byraj7337@gmail.com">
 
-                        sukhvindrasingh8670@gmail.com
+                        byraj7337@gmail.com
                         </a>
                       </li>
                       <li className="d-flex gap-15 align-items-center mb-3">

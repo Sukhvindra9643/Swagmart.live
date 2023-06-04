@@ -2,16 +2,17 @@ const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
-const sendEmail = require("../utils/sendEmail")
+const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
-const cloudinary = require('cloudinary')
+const cloudinary = require("cloudinary");
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatars",
-    width: 150,
-    crop: "scale",
+    width: 1000,
+    height: 1000,
+    Crop: "fill",
   });
 
   const { name, email, password } = req.body;
@@ -83,7 +84,6 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   // )}/password/reset/${resetToken}`;
   const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
-
   const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
 
   try {
@@ -106,7 +106,6 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(error.message, 500));
   }
 });
-
 
 // Reset Password
 exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
@@ -142,7 +141,6 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 
   sendToken(user, 200, res);
 });
-
 
 //Get User Details
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
@@ -188,8 +186,9 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
 
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
       folder: "avatars",
-      width: 150,
-      crop: "scale",
+      width: 1000,
+      height: 1000,
+      Crop: "fill",
     });
 
     newUserData.avatar = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsLinkedin, BsYoutube, BsInstagram, BsGithub } from "react-icons/bs";
+import { BsLinkedin, BsYoutube, BsInstagram,BsFacebook } from "react-icons/bs";
 import "./Footer.css"
 const Footer = () => {
   return (
@@ -39,35 +39,34 @@ const Footer = () => {
               <h4 className="text-white mb-4 footer-middle-heading">Contact Us</h4>
               <div className="text-white footer-middle-databox-1">
                 <address>
-                  Hno : 154 Vill. Gohani <br />
-                  Post Sarawan <br />
-                  District Jalaun <br />
-                  Uttar Pradesh
+                  Hno : 39/1 Govindpuri <br/> kalka ji depot <br />
+                  new delhi <br />
+                  1100199 <br />
                 </address>
                 <a
-                  href="tel:+91 9643315148"
+                  href="tel:+91 9958717765"
                   className="mt-1 d-block mb-1 text-white"
                 >
-                  +91 9643315148
+                  +91 9958717765
                 </a>
                 <a
-                  href="mailto:sukhvindrasingh8670@gmail.com"
+                  href="mailto:byraj7337@gmail.com"
                   className="mt-1 d-block mb-1 text-white"
                 >
-                  sukhvindrasingh8670@gmail.com
+                  byraj7337@gmail.com
                 </a>
 
                 <div className="social-icon d-flex align-items-center gap-30 mt-4">
-                  <a className="text-white" href="https://www.linkedin.com/in/sukhvindra-singh-42b3b3219/">
+                  <a className="text-white" href="https://www.linkedin.com/in/mrbharatyadav/">
                     <BsLinkedin className="social-icon-font"/>
                   </a>
-                  <a className="text-white" href="https://github.com/sukhvindra9718">
-                    <BsGithub className="social-icon-font" />
+                  <a className="text-white" href="https://www.facebook.com/Bharatyadav000/">
+                    <BsFacebook className="social-icon-font" />
                   </a>
                   <a className="text-white" href="https://www.youtube.com/channel/UCowX2_97d0rseBAFgpatjbQ">
                     <BsYoutube className="social-icon-font" />
                   </a>
-                  <a className="text-white" href="https://www.instagram.com/coder0208/">
+                  <a className="text-white" href="https://www.instagram.com/officialmrbharatyadav/">
                     <BsInstagram className="social-icon-font" />
                   </a>
                 </div>
